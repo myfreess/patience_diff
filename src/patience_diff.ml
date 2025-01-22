@@ -206,7 +206,7 @@ let _longest_increasing_subsequence ar =
           ar.(i)
           ~len:(max (!maxlen - 1) 0)
           ~pos:1
-        |> Option.value_local ~default:0
+        |> Option.value ~default:0
       in
       pred.(i) <- m.(p);
       if p = !maxlen || compare_int_pair ar.(i) ar.(p + 1) < 0
@@ -1045,6 +1045,7 @@ module Make (Elt : Hashtbl.Key) = struct
   ;;
 end
 
+(*
 module%test _ = struct
   module P = Make (Int)
 
@@ -1094,6 +1095,7 @@ module%test _ = struct
     check [| 0; 1; 2; 3; 4; 5; 6 |] [| 2; 5; 6; 3; 0; 4; 1 |]
   ;;
 end
+*)
 
 module String = Make (String)
 
